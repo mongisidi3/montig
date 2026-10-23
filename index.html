@@ -70,7 +70,7 @@ input,textarea,select{width:100%;padding:10px 12px;border:1px solid #cbd5e1;bord
 </style></head><body>
 <div id="site"><div class="load">Memuat…</div></div><div id="toast"></div>
 <script>
-const API='https://script.google.com/macros/s/AKfycbzxznX9TfJbnEdJj5xx-8MpnN77RUF6z8DY4cnhs89JRnHa3gJHz_98mcZ30Y6swlncuw/exec';
+const API='https://script.google.com/macros/s/AKfycbwP5prsXfFjA4skHFIEtyeuuBnNci-1MQJS8o7i4EtznuCHWKzYqO_W1Sg-ZgGEEiigrg/exec';
 const IMG=u=>{u=String(u||'').trim();const m=u.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&(?:amp;)?)?id=|thumbnail\?id=)([\w-]{20,})/)||u.match(/lh3\.googleusercontent\.com\/d\/([\w-]{20,})/);return m?'https://drive.google.com/thumbnail?id='+m[1]+'&sz=w1600':u};
 const $=s=>document.querySelector(s),E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),N=s=>E(s).replace(/\n/g,'<br>'),SU=u=>{u=IMG(u);return /^https?:\/\//.test(u)?E(u):''},L=u=>/^(https?:|#|mailto:|tel:)/.test(u)?E(u):'#',FN=x=>String(x).replace(/[^\w ]/g,'');
 let D,T=sessionStorage.t||'',U=JSON.parse(sessionStorage.u||'null'),R=[],C='',UR=[];
@@ -83,7 +83,7 @@ const ph=(u,c='')=>SU(u)?`<img src="${SU(u)}" alt="" loading="lazy" class="${c}"
 const sec=(id,t,sb,b,c='')=>`<section id="${id}" class="${c}"><div class="w"><h2>${E(D.pengaturan['judul_'+id]||t)}</h2><p class="sub">${E(D.pengaturan['sub_'+id]||sb)}</p>${b}</div></section>`;
 const MP=v=>{v=String(v||'');const m=v.match(/src\s*=\s*["']([^"']+)["']/i),u=(m?m[1]:v).trim().replace(/&amp;/g,'&');return /^https:\/\/(www\.)?google\.[a-z.]+\/maps\/embed/i.test(u)||/^https:\/\/maps\.google\.[a-z.]+\/maps\?.*output=embed/i.test(u)?u:''};
 const DEF={nama_sekolah:'Nama Sekolah',gaya_sudut:'sedang',tema_layout:'klasik',gaya_halaman:'',judul_program:'Program dan Inovasi',judul_aplikasi:'Aplikasi Sekolah',tagline:'',warna_utama:'#0f3d6e',warna_aksen:'#c9a24b',warna_latar:'#f8fafc',font_judul:'Playfair Display',font_isi:'Inter',hero_judul:'Selamat Datang',hero_subjudul:'',tentang_judul:'Tentang Sekolah',tentang_isi:'',visi:'',misi:'',sambutan_isi:'',alamat:'',jam_operasional:'',maps_embed:'',footer_teks:'',logo:'',telepon:'',email:''};
-async function load(){try{const c=new AbortController,t=setTimeout(()=>c.abort(),30000);let r;try{r=await fetch(API+'?action=getInitialData',{signal:c.signal})}finally{clearTimeout(t)}
+async function load(){try{const c=new AbortController,t=setTimeout(()=>c.abort(),30000);let r;try{r=await fetch(API+'?action=getPublic',{signal:c.signal})}finally{clearTimeout(t)}
 const tx=await r.text();let j;try{j=JSON.parse(tx)}catch(e){throw Error('Server tidak mengembalikan data JSON. Pastikan Web App di-deploy dengan akses "Anyone" dan memakai versi terbaru.')}
 if(!j.ok)throw Error(j.error);D=j.data;D.pengaturan={...DEF,...(D.pengaturan||{})};['menu','slider','program','fasilitas','guru','berita','galeri','prestasi','agenda','halaman','aplikasi'].forEach(k=>D[k]=D[k]||[]);render()}
 catch(x){const m=/Failed to fetch|abort/i.test(x.message)?'Tidak bisa terhubung ke server. Buka halaman ini dari hosting (mis. GitHub Pages) atau file langsung di browser, bukan dari pratinjau/preview.':x.message;
