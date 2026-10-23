@@ -70,7 +70,7 @@ input,textarea,select{width:100%;padding:10px 12px;border:1px solid #cbd5e1;bord
 </style></head><body>
 <div id="site"><div class="load">Memuat…</div></div><div id="toast"></div>
 <script>
-const API='https://script.google.com/macros/s/AKfycbzT7mnalbXBYQIGFJX8c2EKF5j5n60dPIxtB-6sz4U4t6tEis1huODAq9CGopdkmw/exec';
+const API='https://script.google.com/macros/s/AKfycbzxznX9TfJbnEdJj5xx-8MpnN77RUF6z8DY4cnhs89JRnHa3gJHz_98mcZ30Y6swlncuw/exec';
 const IMG=u=>{u=String(u||'').trim();const m=u.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&(?:amp;)?)?id=|thumbnail\?id=)([\w-]{20,})/)||u.match(/lh3\.googleusercontent\.com\/d\/([\w-]{20,})/);return m?'https://drive.google.com/thumbnail?id='+m[1]+'&sz=w1600':u};
 const $=s=>document.querySelector(s),E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),N=s=>E(s).replace(/\n/g,'<br>'),SU=u=>{u=IMG(u);return /^https?:\/\//.test(u)?E(u):''},L=u=>/^(https?:|#|mailto:|tel:)/.test(u)?E(u):'#',FN=x=>String(x).replace(/[^\w ]/g,'');
 let D,T=sessionStorage.t||'',U=JSON.parse(sessionStorage.u||'null'),R=[],C='',UR=[];
